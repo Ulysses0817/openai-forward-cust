@@ -70,6 +70,8 @@ class ChatSaver:
                 "model": model,
                 "forwarded-for": request.headers.get("x-forwarded-for") or "",
                 "uid": uid,
+                "accesscode": request.headers.get('accesscode', "noaccesscode"),
+                "authorization": request.headers.get('authorization', "") if request.headers.get('accesscode', "") == "" else "",
                 "datetime": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
             }
         else:
